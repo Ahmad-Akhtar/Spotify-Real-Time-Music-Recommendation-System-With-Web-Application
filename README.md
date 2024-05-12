@@ -71,30 +71,30 @@ The convert_datetime function is used to convert date columns to datetime format
 It converts genres from string representations to lists of integers.
 Finally, it renames columns for clarity and consistency.
 
-# Formatting Albums:
+- Formatting Albums:
 
 Similarly, it formats the albums metadata.
 It drops redundant columns already present in the tracks dataframe.
 Date columns are converted to datetime format.
 Renaming of columns and handling missing values are performed.
 
-# Formatting Artists:
+- Formatting Artists:
 
 It formats the artists metadata, dropping redundant columns.
 Date columns are converted to datetime format, and missing values are handled.
 Renaming of columns is also performed.
 
-# Merging DataFrames:
+- Merging DataFrames:
 
 After formatting individual dataframes, they are merged based on common keys (e.g., album_id, artist_id).
 Missing values are handled, and duplicate columns resulting from the merge are cleaned up.
 It ensures that the merged dataframe maintains consistency and correctness.
 
-# Additional Formatting:
+- Additional Formatting:
 
 Remaining missing values are filled or replaced with appropriate defaults.
 Certain columns are cast to integer data types for consistency.
 
-# Quality Assurance:
+- Quality Assurance:
 
 Assertions are used to ensure the correctness of the formatting process, checking for expected conditions after each step.
