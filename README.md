@@ -171,3 +171,29 @@ After processing all audio files, it closes the MongoDB connection.
 
 Finally, the function is called with the specified parameters to extract MFCC features from audio files in the given directory and store them in MongoDB.
 This code enables the extraction and storage of MFCC features, facilitating further analysis or machine learning tasks such as music recommendation or genre classification.
+
+# Deployment (Melodify Application) 
+
+- Flask:
+
+Flask is like the foundation of our music streaming website. It helps us create different parts of the website and decide what to do when someone visits certain pages.
+- KafkaProducer:
+
+Think of KafkaProducer like a mailman. It's responsible for sending messages about what people are doing on our website to a special place called Kafka.
+- KafkaConsumer:
+
+KafkaConsumer is like a listener who waits for messages from Kafka. When someone does something on our website, like listening to a song, KafkaConsumer hears about it.
+- Initialization:
+
+We set up the mailman (KafkaProducer) and the listener (KafkaConsumer) to connect to our website and Kafka, making sure they know where to send and receive messages.
+- Routes:
+
+We decide what happens when someone visits different parts of our website. For example, when someone goes to the main page, they get a welcoming message. When they ask for music recommendations, we handle that too.This is like a special function that's called when someone asks for music recommendations. It tells the mailman (KafkaProducer) to send a message saying someone is listening to music. Then, it waits for recommendations to come back from Kafka, our message hub.
+
+- Running the Application :
+
+When we run the code, it starts our music streaming website. It's like opening a shop for people to visit on the internet.
+- Output:
+
+When someone visits our website, they'll see a nice welcome message.
+If someone wants music recommendations, they can ask, and our website will give them some based on what other people are listening to.
