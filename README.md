@@ -131,3 +131,43 @@ Unnecessary columns like 'genre_id', 'album_id', and 'artist_id' are dropped.
 Redundant columns are dropped again.
 Finally, column names are further refined for clarity.
 
+
+  Next we define a function extract_and_store_mfcc that extracts Mel-frequency cepstral coefficients (MFCC) features from audio files and saves them into a MongoDB database. Here's what the code does:
+
+- Function Definition:
+
+The function extract_and_store_mfcc is defined, taking several parameters such as the audio directory, MongoDB connection parameters (URI, database name, collection name), a DataFrame containing track information, and an optional scaler for normalization or standardization.
+
+- Connecting to MongoDB:
+
+The function connects to the MongoDB instance using the provided connection parameters.
+
+- Iterating Through Audio Files:
+
+It iterates through each folder in the specified audio directory.
+For each folder, it iterates through each audio file.
+It loads the audio file and extracts MFCC features using the librosa library.
+Applying Normalization or Standardization:
+
+If a scaler is provided, it normalizes or standardizes the MFCC features.
+
+- Matching Track Information:
+
+It extracts the track ID from the file name and matches it with corresponding information from the provided DataFrame (merged_df).
+
+- Storing Data in MongoDB:
+
+It creates a dictionary containing the track's genre, album, artist, track ID, title, and MFCC features.
+It inserts this data into the MongoDB collection.
+
+- Handling Errors:
+
+It catches any exceptions that occur during processing and prints error messages.
+Closing MongoDB Connection:
+
+After processing all audio files, it closes the MongoDB connection.
+
+- Calling the Function:
+
+Finally, the function is called with the specified parameters to extract MFCC features from audio files in the given directory and store them in MongoDB.
+This code enables the extraction and storage of MFCC features, facilitating further analysis or machine learning tasks such as music recommendation or genre classification.
