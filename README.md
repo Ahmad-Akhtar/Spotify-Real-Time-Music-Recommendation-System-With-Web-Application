@@ -63,7 +63,9 @@ It displays a sample of the loaded data for tracks, albums, artists, and genres.
 
 
 
-# Formatting Tracks Metadata
+# Formatting Metadata
+
+- Formatting Tracks:
 
 It begins by formatting the tracks metadata.
 It drops several columns that are deemed unnecessary or have a significant amount of missing data.
@@ -98,3 +100,34 @@ Certain columns are cast to integer data types for consistency.
 - Quality Assurance:
 
 Assertions are used to ensure the correctness of the formatting process, checking for expected conditions after each step.
+
+- Removing Unwanted Tracks:
+
+The function keep filters out tracks based on certain criteria, such as tracks with missing audio or clips, or tracks for which feature extraction failed.
+It prints the number of tracks lost and the number of tracks remaining after each filtering step.
+
+- Cleaning Genres:
+
+It performs various cleaning operations on the genres data.
+Redundant columns like 'genre_handle' and 'genre_color' are dropped.
+Missing values in the 'parent' column are filled with zeros, and the column is converted to integer type.
+Corrections are made for specific genre-parent relationships where the parent was missing or incorrect.
+A specific genre (806) is replaced with another genre (21) to correct a mistake.
+A function get_parent is defined to retrieve the parent genre recursively.
+Another function get_all_genres is defined to gather all genres encountered from leaf to root.
+The number of tracks per genre is counted.
+Genres with zero tracks are identified and printed.
+
+- Matching Genres with Tracks:
+
+It matches the 'genre_top' values from tracks with genre IDs from the genres DataFrame.
+A new DataFrame is created with matched genre IDs and their corresponding information from the genres DataFrame.
+
+- Merging DataFrames:
+
+The matched genres DataFrame is merged with additional information from the tracks DataFrame, such as album ID, album title, artist ID, artist name, and track title.
+Column names are updated for clarity.
+Unnecessary columns like 'genre_id', 'album_id', and 'artist_id' are dropped.
+Redundant columns are dropped again.
+Finally, column names are further refined for clarity.
+
